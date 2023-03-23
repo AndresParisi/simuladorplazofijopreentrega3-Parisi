@@ -1,0 +1,88 @@
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    background-image: url(https://img.freepik.com/free-vector/paper-style-white-monochrome-background_52683-66443.jpg?w=1380&t=st=1676685445~exp=1676686045~hmac=b6717ca74a0b82b34776797f3eaa362aa90ee68f5d7480fe62c24020ed4792a8);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    color: #003366;
+    text-shadow: 1px 1px #cccccc;
+  }
+  
+  
+  div {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    padding: 30px;
+    max-width: 500px;
+  }
+  
+  label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #3e8e41;
+  }
+  
+  #resultado {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    padding: 30px;
+    max-width: 500px;
+  }
+  
+  #filtrarNombre {
+    background-color: #4caf50;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  #filtrarNombre:hover {
+    background-color: #3e8e41;
+  }
+  

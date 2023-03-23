@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Simulador de plazo fijo</title>
+  </head>
+  <body>
+    <h1>INVERSION DE PLAZO FIJO</h1>
+    <div>
+      <label for="nombre">Nombre y apellido:</label>
+      <input type="text" id="nombre" name="nombre" /><br /><br />
+      <label for="capital">Capital a invertir:</label>
+      <input type="number" id="capital" name="capital" /><br /><br />
+      <label for="plazo">Plazo en meses:</label>
+      <input type="number" id="plazo" name="plazo" /><br /><br />
+      <button id="boton">Calcular Desglose</button>
+    </div>
+    <div id="resultado"></div>
+    <button id="filtrarNombre">Filtrar por Nombre</button>
+    <script>
+      const INTERES = 0.0625;
+      let mensajes = JSON.parse(localStorage.getItem("mensajes")) || [];
+
+      function calcularDesglose(nombre, capital, plazo) {
+        let ganancia = capital * (INTERES * plazo);
+        let total = capital + ganancia;
+
+        let desglose = {
+          nombre,
+          capital,
+          plazo,
+          ganancia,
+          total,
+        };
+
+        mensajes.push(desglose);
+        localStorage.setItem("mensajes", JSON.stringify(mensajes)); // Guardar en el almacenamiento local storage
+
+        console.log(`Nuevo mensaje:`, desglose);
+
+        document.getElementById(
+          "resultado"
+        ).innerHTML = `Bienvenido ${nombre},<br>
+			    Vea debajo el desglose de su inversión:<br>
+			    Capital: ${capital}<br>
+			    Plazo: ${plazo} meses<br>
+			    Interes Generado: ${ganancia}<br>
+			    Total: ${total}<br>
+			    TNA: 75%`;
+      }
+
+      
+
+      function pedirDatos() {
+        let nombre = document.getElementById("nombre").value;
+        let capital = document.getElementById("capital").value;
+        let plazo = document.getElementById("plazo").value;
+
+        if (!nombre) {
+          alert("Ingrese su nombre y apellido");
+          return;
+        }
+
+        capital = Number(capital);
+        if (!capital) {
+          alert("Ingrese capital a invertir");
+          return;
+        }
+
+        plazo = Number(plazo);
+        if (!plazo) {
+          alert("Ingrese plazo en meses");
+          return;
+        }
+
+        if (plazo < 3) {
+          alert(
+            `Lo siento ${nombre}, el plazo mínimo para esta inversión es de 3 meses`
+          );
+        } else {
+          calcularDesglose(nombre, capital, plazo);
+        }
+      }
+
+      function filtrarNombre(data) {
+        let nombreFiltrado = prompt(`Ingrese el nombre que desee filtrar`);
+        let dataFiltrada = data.filter(
+          (item) => item.nombre === nombreFiltrado
+        );
+        console.log(
+          `Calculos filtrados por nombre: ${nombreFiltrado}`,
+          dataFiltrada
+        );
+      }
+
+      document.getElementById("boton").addEventListener("click", pedirDatos);
+
+      document
+        .getElementById("filtrarNombre")
+        .addEventListener("click", function () {
+          filtrarNombre(mensajes);
+        });
+    </script>
+  </body>
+  <script src="js/main.js"></script>
+</html>
